@@ -1,4 +1,5 @@
 FROM ubuntu:latest
+LABEL org.opencontainers.image.source=https://github.com/jacobromero/devcontainer
 RUN apt update
 RUN apt install -y build-essential procps curl file git ruby zsh bash
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
