@@ -3,8 +3,5 @@ LABEL org.opencontainers.image.source=https://github.com/jacobromero/devcontaine
 RUN apt update
 RUN apt install -y build-essential procps curl file git ruby zsh bash
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-RUN NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-RUN (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /root/.zshrc
-RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-RUN /home/linuxbrew/.linuxbrew/bin/brew install gcc neovim
+RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz && rm -rf /opt/nvim && tar -xvf nvim-linux64.tar.gz && mv nvim-linux64 /opt/nvim && ln -s /opt/nvim/bin/nvim /usr/local/bin
 CMD [ "zsh" ]
